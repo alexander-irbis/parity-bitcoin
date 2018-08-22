@@ -4,6 +4,10 @@ use chain;
 use super::transaction::RawTransaction;
 use miner;
 
+use v1::helpers::serialize::{
+	as_hex,
+};
+
 /// Block template as described in:
 /// https://github.com/bitcoin/bips/blob/master/bip-0022.mediawiki
 /// https://github.com/bitcoin/bips/blob/master/bip-0023.mediawiki
@@ -50,6 +54,7 @@ pub struct BlockTemplate {
 	/// Current timestamp in seconds since epoch (Jan 1 1970 GMT)
 	pub curtime: u32,
 	/// Compressed target of next block
+	#[serde(serialize_with="as_hex")]
 	pub bits: u32,
 	/// The height of the next block
 	pub height: u32,
@@ -190,7 +195,7 @@ mod tests {
 			curtime: 100,
 			bits: 200,
 			height: 300,
-		}).unwrap(), r#"{"version":0,"rules":null,"vbavailable":null,"vbrequired":null,"previousblockhash":"0000000000000000000000000000000000000000000000000000000000000000","transactions":[],"coinbaseaux":null,"coinbasevalue":null,"coinbasetxn":null,"target":"0000000000000000000000000000000000000000000000000000000000000000","mintime":null,"mutable":null,"noncerange":null,"sigoplimit":null,"sizelimit":null,"weightlimit":null,"curtime":100,"bits":200,"height":300}"#);
+		}).unwrap(), r#"{"version":0,"rules":null,"vbavailable":null,"vbrequired":null,"previousblockhash":"0000000000000000000000000000000000000000000000000000000000000000","transactions":[],"coinbaseaux":null,"coinbasevalue":null,"coinbasetxn":null,"target":"0000000000000000000000000000000000000000000000000000000000000000","mintime":null,"mutable":null,"noncerange":null,"sigoplimit":null,"sizelimit":null,"weightlimit":null,"curtime":100,"bits":"c8","height":300}"#);
 		assert_eq!(serde_json::to_string(&BlockTemplate {
 			version: 0,
 			rules: Some(vec!["a".to_owned()]),
@@ -229,13 +234,13 @@ mod tests {
 			curtime: 100,
 			bits: 200,
 			height: 300,
-		}).unwrap(), r#"{"version":0,"rules":["a"],"vbavailable":{"b":5},"vbrequired":10,"previousblockhash":"0a00000000000000000000000000000000000000000000000000000000000000","transactions":[{"data":"00010203","txid":null,"hash":null,"depends":null,"fee":null,"sigops":null,"weight":null,"required":false}],"coinbaseaux":{"c":"d"},"coinbasevalue":30,"coinbasetxn":{"data":"555555","txid":"2c00000000000000000000000000000000000000000000000000000000000000","hash":"3700000000000000000000000000000000000000000000000000000000000000","depends":[1],"fee":300,"sigops":400,"weight":500,"required":true},"target":"6400000000000000000000000000000000000000000000000000000000000000","mintime":7,"mutable":["afg"],"noncerange":"00000000ffffffff","sigoplimit":45,"sizelimit":449,"weightlimit":523,"curtime":100,"bits":200,"height":300}"#);
+		}).unwrap(), r#"{"version":0,"rules":["a"],"vbavailable":{"b":5},"vbrequired":10,"previousblockhash":"0a00000000000000000000000000000000000000000000000000000000000000","transactions":[{"data":"00010203","txid":null,"hash":null,"depends":null,"fee":null,"sigops":null,"weight":null,"required":false}],"coinbaseaux":{"c":"d"},"coinbasevalue":30,"coinbasetxn":{"data":"555555","txid":"2c00000000000000000000000000000000000000000000000000000000000000","hash":"3700000000000000000000000000000000000000000000000000000000000000","depends":[1],"fee":300,"sigops":400,"weight":500,"required":true},"target":"6400000000000000000000000000000000000000000000000000000000000000","mintime":7,"mutable":["afg"],"noncerange":"00000000ffffffff","sigoplimit":45,"sizelimit":449,"weightlimit":523,"curtime":100,"bits":"c8","height":300}"#);
 	}
 
 	#[test]
 	fn block_template_deserialize() {
 		assert_eq!(
-			serde_json::from_str::<BlockTemplate>(r#"{"version":0,"rules":null,"vbavailable":null,"vbrequired":null,"previousblockhash":"0000000000000000000000000000000000000000000000000000000000000000","transactions":[],"coinbaseaux":null,"coinbasevalue":null,"coinbasetxn":null,"target":"0000000000000000000000000000000000000000000000000000000000000000","mintime":null,"mutable":null,"noncerange":null,"sigoplimit":null,"sizelimit":null,"weightlimit":null,"curtime":100,"bits":200,"height":300}"#).unwrap(),
+			serde_json::from_str::<BlockTemplate>(r#"{"version":0,"rules":null,"vbavailable":null,"vbrequired":null,"previousblockhash":"0000000000000000000000000000000000000000000000000000000000000000","transactions":[],"coinbaseaux":null,"coinbasevalue":null,"coinbasetxn":null,"target":"0000000000000000000000000000000000000000000000000000000000000000","mintime":null,"mutable":null,"noncerange":null,"sigoplimit":null,"sizelimit":null,"weightlimit":null,"curtime":100,"bits":"c8","height":300}"#).unwrap(),
 			BlockTemplate {
 				version: 0,
 				rules: None,
@@ -258,7 +263,7 @@ mod tests {
 				height: 300,
 			});
 		assert_eq!(
-			serde_json::from_str::<BlockTemplate>(r#"{"version":0,"rules":["a"],"vbavailable":{"b":5},"vbrequired":10,"previousblockhash":"0a00000000000000000000000000000000000000000000000000000000000000","transactions":[{"data":"00010203","txid":null,"hash":null,"depends":null,"fee":null,"sigops":null,"weight":null,"required":false}],"coinbaseaux":{"c":"d"},"coinbasevalue":30,"coinbasetxn":{"data":"555555","txid":"2c00000000000000000000000000000000000000000000000000000000000000","hash":"3700000000000000000000000000000000000000000000000000000000000000","depends":[1],"fee":300,"sigops":400,"weight":500,"required":true},"target":"6400000000000000000000000000000000000000000000000000000000000000","mintime":7,"mutable":["afg"],"noncerange":"00000000ffffffff","sigoplimit":45,"sizelimit":449,"weightlimit":523,"curtime":100,"bits":200,"height":300}"#).unwrap(),
+			serde_json::from_str::<BlockTemplate>(r#"{"version":0,"rules":["a"],"vbavailable":{"b":5},"vbrequired":10,"previousblockhash":"0a00000000000000000000000000000000000000000000000000000000000000","transactions":[{"data":"00010203","txid":null,"hash":null,"depends":null,"fee":null,"sigops":null,"weight":null,"required":false}],"coinbaseaux":{"c":"d"},"coinbasevalue":30,"coinbasetxn":{"data":"555555","txid":"2c00000000000000000000000000000000000000000000000000000000000000","hash":"3700000000000000000000000000000000000000000000000000000000000000","depends":[1],"fee":300,"sigops":400,"weight":500,"required":true},"target":"6400000000000000000000000000000000000000000000000000000000000000","mintime":7,"mutable":["afg"],"noncerange":"00000000ffffffff","sigoplimit":45,"sizelimit":449,"weightlimit":523,"curtime":100,"bits":"c8","height":300}"#).unwrap(),
 			BlockTemplate {
 				version: 0,
 				rules: Some(vec!["a".to_owned()]),
