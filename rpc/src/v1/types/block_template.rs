@@ -5,7 +5,7 @@ use super::transaction::RawTransaction;
 use miner;
 
 use v1::helpers::serialize::{
-	as_hex,
+	as_hex, u32_from_hex
 };
 
 /// Block template as described in:
@@ -54,7 +54,7 @@ pub struct BlockTemplate {
 	/// Current timestamp in seconds since epoch (Jan 1 1970 GMT)
 	pub curtime: u32,
 	/// Compressed target of next block
-	#[serde(serialize_with="as_hex")]
+	#[serde(serialize_with="as_hex", deserialize_with="u32_from_hex")]
 	pub bits: u32,
 	/// The height of the next block
 	pub height: u32,
@@ -81,7 +81,7 @@ pub struct BlockTemplateTransaction {
 	/// Total transaction weight, as counted for purposes of block limits.
 	pub weight: Option<i64>,
 	/// If provided and true, this transaction must be in the final block
-	pub required: bool,
+	pub required: Option<bool>,
 }
 
 impl From<miner::BlockTemplate> for BlockTemplate {
