@@ -457,8 +457,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "jsonrpc-core"
-version = "8.0.0"
-source = "git+https://github.com/ethcore/jsonrpc.git#0eba7e745b0895b4234cd8d89b28e10e2c3c34a4"
+version = "8.0.1"
+source = "git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1#01434b52bb7767c845c3cf43d545036e7680a263"
 dependencies = [
  "futures 0.1.17 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -470,11 +470,11 @@ dependencies = [
 [[package]]
 name = "jsonrpc-http-server"
 version = "8.0.0"
-source = "git+https://github.com/ethcore/jsonrpc.git#0eba7e745b0895b4234cd8d89b28e10e2c3c34a4"
+source = "git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1#01434b52bb7767c845c3cf43d545036e7680a263"
 dependencies = [
  "hyper 0.11.7 (registry+https://github.com/rust-lang/crates.io-index)",
- "jsonrpc-core 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)",
- "jsonrpc-server-utils 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)",
+ "jsonrpc-core 8.0.1 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)",
+ "jsonrpc-server-utils 8.0.0 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)",
  "log 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "net2 0.2.31 (registry+https://github.com/rust-lang/crates.io-index)",
  "unicase 2.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -483,19 +483,19 @@ dependencies = [
 [[package]]
 name = "jsonrpc-macros"
 version = "8.0.0"
-source = "git+https://github.com/ethcore/jsonrpc.git#0eba7e745b0895b4234cd8d89b28e10e2c3c34a4"
+source = "git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1#01434b52bb7767c845c3cf43d545036e7680a263"
 dependencies = [
- "jsonrpc-core 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)",
- "jsonrpc-pubsub 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)",
+ "jsonrpc-core 8.0.1 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)",
+ "jsonrpc-pubsub 8.0.0 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)",
  "serde 1.0.21 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "jsonrpc-pubsub"
 version = "8.0.0"
-source = "git+https://github.com/ethcore/jsonrpc.git#0eba7e745b0895b4234cd8d89b28e10e2c3c34a4"
+source = "git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1#01434b52bb7767c845c3cf43d545036e7680a263"
 dependencies = [
- "jsonrpc-core 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)",
+ "jsonrpc-core 8.0.1 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)",
  "log 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "parking_lot 0.4.8 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -503,11 +503,11 @@ dependencies = [
 [[package]]
 name = "jsonrpc-server-utils"
 version = "8.0.0"
-source = "git+https://github.com/ethcore/jsonrpc.git#0eba7e745b0895b4234cd8d89b28e10e2c3c34a4"
+source = "git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1#01434b52bb7767c845c3cf43d545036e7680a263"
 dependencies = [
  "bytes 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "globset 0.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
- "jsonrpc-core 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)",
+ "jsonrpc-core 8.0.1 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)",
  "log 0.3.8 (registry+https://github.com/rust-lang/crates.io-index)",
  "tokio-core 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)",
  "tokio-io 0.1.4 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1013,9 +1013,9 @@ dependencies = [
  "chain 0.1.0",
  "db 0.1.0",
  "hex 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "jsonrpc-core 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)",
- "jsonrpc-http-server 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)",
- "jsonrpc-macros 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)",
+ "jsonrpc-core 8.0.1 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)",
+ "jsonrpc-http-server 8.0.0 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)",
+ "jsonrpc-macros 8.0.0 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)",
  "keys 0.1.0",
  "log 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "miner 0.1.0",
@@ -1565,11 +1565,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum hyper 0.11.7 (registry+https://github.com/rust-lang/crates.io-index)" = "4959ca95f55df4265bff2ad63066147255e6fa733682cf6d1cb5eaff6e53324b"
 "checksum iovec 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "b6e8b9c2247fcf6c6a1151f1156932be5606c9fd6f55a2d7f9fc1cb29386b2f7"
 "checksum itoa 0.3.4 (registry+https://github.com/rust-lang/crates.io-index)" = "8324a32baf01e2ae060e9de58ed0bc2320c9a2833491ee36cd3b4c414de4db8c"
-"checksum jsonrpc-core 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)" = "<none>"
-"checksum jsonrpc-http-server 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)" = "<none>"
-"checksum jsonrpc-macros 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)" = "<none>"
-"checksum jsonrpc-pubsub 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)" = "<none>"
-"checksum jsonrpc-server-utils 8.0.0 (git+https://github.com/ethcore/jsonrpc.git)" = "<none>"
+"checksum jsonrpc-core 8.0.1 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)" = "<none>"
+"checksum jsonrpc-http-server 8.0.0 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)" = "<none>"
+"checksum jsonrpc-macros 8.0.0 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)" = "<none>"
+"checksum jsonrpc-pubsub 8.0.0 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)" = "<none>"
+"checksum jsonrpc-server-utils 8.0.0 (git+https://github.com/ethcore/jsonrpc.git?tag=v8.0.1)" = "<none>"
 "checksum kernel32-sys 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "7507624b29483431c0ba2d82aece8ca6cdba9382bff4ddd0f7490560c056098d"
 "checksum language-tags 0.2.2 (registry+https://github.com/rust-lang/crates.io-index)" = "a91d884b6667cd606bb5a69aa0c99ba811a115fc68915e7056ec08a46e93199a"
 "checksum lazy_static 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "c8f31047daa365f19be14b47c29df4f7c3b581832407daabe6ae77397619237d"
